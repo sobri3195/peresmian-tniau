@@ -2,32 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  color-scheme: dark;
-}
-
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #030b1f;
-  overflow: hidden;
-}
-
-.futuristic-bg {
-  background:
-    radial-gradient(circle at 20% 30%, rgba(66, 229, 255, 0.18), transparent 45%),
-    radial-gradient(circle at 80% 20%, rgba(216, 177, 90, 0.15), transparent 45%),
-    radial-gradient(circle at 50% 80%, rgba(66, 229, 255, 0.15), transparent 40%),
-    linear-gradient(140deg, #020611, #06152f 55%, #0a2348);
-}
-
-.grid-overlay::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: radial-gradient(circle at center, black 35%, transparent 95%);
-  pointer-events: none;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
