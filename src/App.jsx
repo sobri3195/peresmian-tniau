@@ -7,21 +7,14 @@ function App() {
   const [phase, setPhase] = useState('scan');
 
   return (
-    <main className="digital-bg relative min-h-screen overflow-hidden text-white">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(66,229,255,0.18),transparent_45%)]" />
+    <main className="relative min-h-screen overflow-hidden bg-[linear-gradient(160deg,#06172d_0%,#08213f_55%,#06172d_100%)] text-white">
       <AnimatePresence mode="wait">
         {phase === 'scan' ? (
           <motion.div key="scan" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.7 }}>
             <HandScanner onComplete={() => setPhase('launch')} />
           </motion.div>
         ) : (
-          <motion.div
-            key="launch"
-            initial={{ opacity: 0, y: 20, filter: 'blur(6px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.9, ease: 'easeOut' }}
-          >
+          <motion.div key="launch" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9 }}>
             <LaunchScreen onReset={() => setPhase('scan')} />
           </motion.div>
         )}
