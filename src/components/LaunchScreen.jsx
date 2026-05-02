@@ -8,7 +8,6 @@ const websites = [
     name: 'SILARAS',
     url: 'https://silaras.puskesau.com',
     preview: '/src/assets/silaras-preview.png',
-    fallbackPreview: '/images/silaras.svg',
     description:
       'Sistem layanan digital PUSKESAU untuk mendukung kemudahan akses, integrasi data, dan peningkatan mutu pelayanan.',
   },
@@ -16,7 +15,6 @@ const websites = [
     name: 'SIMON',
     url: 'https://simon.puskesau.com',
     preview: '/src/assets/simon-preview.png',
-    fallbackPreview: '/images/simon.svg',
     description:
       'Sistem monitoring digital PUSKESAU untuk mendukung pemantauan, evaluasi, dan penguatan layanan secara modern.',
   },
@@ -30,7 +28,7 @@ function LaunchScreen({ onReset }) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.18),transparent_42%)]" />
       <div className="relative z-10 mx-auto w-full max-w-7xl">
         <motion.div initial={{ opacity: 0, scale: 0.7 }} animate={{ opacity: 1, scale: 1 }} className="mb-6 flex justify-center">
-          <img src='/src/assets/logo-puskesau.png' alt="Logo PUSKESAU" className="h-20 w-20 rounded-full bg-white/10 p-2 shadow-[0_0_24px_rgba(34,211,238,0.45)] md:h-24 md:w-24" />
+          <img src="/src/assets/logo-puskesau.png" alt="Logo PUSKESAU" className="h-20 w-20 rounded-full bg-white/10 p-2 shadow-[0_0_24px_rgba(34,211,238,0.45)] md:h-24 md:w-24" />
         </motion.div>
 
         <motion.header initial={{ opacity: 0, y: 26 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9 }} className="text-center">
