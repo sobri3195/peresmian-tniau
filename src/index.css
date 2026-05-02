@@ -4,20 +4,28 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
 }
 
-.digital-bg {
-  background: linear-gradient(145deg, #020b1f 0%, #06152f 45%, #031d3f 100%);
+@keyframes grid-pan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(52px); }
+}
+@keyframes hologram-flicker {
+  0%, 100% { opacity: 0.14; }
+  50% { opacity: 0.28; }
+}
+@keyframes sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-.digital-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(110, 176, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(110, 176, 255, 0.08) 1px, transparent 1px);
-  background-size: 48px 48px;
-  pointer-events: none;
+.animate-grid-pan { animation: grid-pan 10s linear infinite; }
+.animate-hologram-flicker { animation: hologram-flicker 1.8s ease-in-out infinite; }
+.title-sweep {
+  background: linear-gradient(120deg, #fff 30%, #22d3ee 45%, #fff 60%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sweep 4s linear infinite;
 }
