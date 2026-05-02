@@ -5,12 +5,16 @@ const websites = [
   {
     name: 'SILARAS',
     url: 'https://silaras.puskesau.com',
+    preview: '/src/assets/silaras-preview.png',
+    fallbackPreview: '/images/silaras.svg',
     description:
-      'Sistem layanan digital PUSKESAU yang mendukung kemudahan akses, integrasi data, dan peningkatan mutu pelayanan.',
+      'Sistem layanan digital PUSKESAU untuk mendukung kemudahan akses, integrasi data, dan peningkatan mutu pelayanan.',
   },
   {
     name: 'SIMON',
     url: 'https://simon.puskesau.com',
+    preview: '/src/assets/simon-preview.png',
+    fallbackPreview: '/images/simon.svg',
     description:
       'Sistem monitoring digital PUSKESAU untuk mendukung pemantauan, evaluasi, dan transformasi layanan secara modern.',
   },
@@ -38,10 +42,7 @@ function LaunchScreen({ onReset }) {
       </div>
 
       <div className="mt-10 text-center">
-        <button
-          onClick={onReset}
-          className="rounded-xl border border-cyan-300/70 bg-cyan-500/10 px-6 py-3 font-semibold text-cyan-100 transition hover:bg-cyan-500/20"
-        >
+        <button onClick={onReset} className="rounded-xl border border-cyan-300/70 bg-cyan-500/10 px-6 py-3 font-semibold text-cyan-100 transition hover:bg-cyan-500/20">
           Ulangi Scan
         </button>
       </div>
