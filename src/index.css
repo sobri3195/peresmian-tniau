@@ -6,3 +6,18 @@ body {
   margin: 0;
   font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.digital-bg {
+  background: linear-gradient(145deg, #020b1f 0%, #06152f 45%, #031d3f 100%);
+}
+
+.digital-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(110, 176, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 176, 255, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
