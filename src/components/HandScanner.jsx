@@ -15,7 +15,7 @@ function HandScanner({ onComplete }) {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(timer);
-          setTimeout(onComplete, 1500);
+          setTimeout(onComplete, 2800);
           return 100;
         }
         return prev + 2;
@@ -26,7 +26,7 @@ function HandScanner({ onComplete }) {
 
   return (
     <section className="mx-auto flex min-h-screen w-full max-w-5xl flex-col items-center justify-center px-6 text-center">
-      <h2 className="mb-8 text-2xl font-bold tracking-wide text-cyan-100 md:text-4xl">Silakan Letakkan Tangan untuk Memulai</h2>
+      <h2 className="mb-8 text-2xl font-bold tracking-wide text-cyan-100 md:text-4xl">Mohon izin Kapuskesau meletakkan tangan untuk memulai</h2>
 
       <div
         onClick={() => !scanning && setScanning(true)}
@@ -66,9 +66,23 @@ function HandScanner({ onComplete }) {
           <p className="mt-2 text-right text-sm text-cyan-200">{progress}%</p>
 
           {progress >= 100 && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-6 rounded-xl border border-emerald-300/50 bg-emerald-500/15 p-4">
-              <p className="text-2xl font-bold text-emerald-200">SCAN BERHASIL</p>
-              <p className="text-emerald-100">Peresmian Portal Digital Dimulai</p>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="relative mt-6 overflow-hidden rounded-xl border border-emerald-300/50 bg-emerald-500/15 p-4">
+              <motion.div
+                className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-300/50 via-white/40 to-cyan-300/50"
+                initial={{ scale: 0.2, opacity: 0 }}
+                animate={{ scale: 2.2, opacity: [0, 0.95, 0] }}
+                transition={{ duration: 1.1, ease: 'easeOut' }}
+              />
+              <p className="relative text-2xl font-bold text-emerald-200">SCAN BERHASIL</p>
+              <p className="relative text-emerald-100">Peresmian Portal Digital Dimulai</p>
+              <motion.p
+                className="relative mt-3 text-xl font-extrabold tracking-widest text-gold md:text-2xl"
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: [0.7, 1.08, 1], opacity: 1 }}
+                transition={{ delay: 0.35, duration: 1.2, ease: 'easeOut' }}
+              >
+                TRANSFORMASI TNI AU AMPUH
+              </motion.p>
             </motion.div>
           )}
         </div>
