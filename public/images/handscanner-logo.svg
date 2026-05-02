@@ -1,0 +1,57 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#0B6BFF"/>
+      <stop offset="100%" stop-color="#001A5E"/>
+    </radialGradient>
+    <linearGradient id="circuit" x1="0" y1="0" x2="800" y2="800">
+      <stop offset="0" stop-color="#2FE9FF" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#28A8FF" stop-opacity="0.3"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#bg)"/>
+
+  <g stroke="url(#circuit)" stroke-width="3" opacity="0.8">
+    <path d="M0 120H180L230 70H320"/>
+    <path d="M800 180H620L560 240H460"/>
+    <path d="M0 700H220L290 630H360"/>
+    <path d="M800 650H600L520 590H460"/>
+    <circle cx="180" cy="120" r="6" fill="#5CF3FF"/>
+    <circle cx="620" cy="180" r="6" fill="#5CF3FF"/>
+    <circle cx="220" cy="700" r="6" fill="#5CF3FF"/>
+    <circle cx="600" cy="650" r="6" fill="#5CF3FF"/>
+  </g>
+
+  <g opacity="0.95">
+    <circle cx="400" cy="400" r="255" stroke="#5BE9FF" stroke-opacity="0.6" stroke-width="10"/>
+    <circle cx="400" cy="400" r="225" stroke="#48DEFF" stroke-opacity="0.35" stroke-width="5"/>
+    <circle cx="400" cy="400" r="285" stroke="#48DEFF" stroke-opacity="0.25" stroke-width="16" stroke-dasharray="80 22"/>
+  </g>
+
+  <g filter="url(#glow)">
+    <path d="M318 512c-25 0-47-18-51-43l-21-129c-4-23 8-45 29-55 20-9 44-4 59 13l41 48 23-115c5-25 27-43 53-43 30 0 54 24 54 54v93l15-20c15-20 45-27 68-14 26 14 37 46 24 74l-72 158c-10 22-33 36-57 36H318z" fill="#16D3FF"/>
+    <rect x="285" y="255" width="42" height="128" rx="21" fill="#20DCFF" transform="rotate(-24 285 255)"/>
+    <rect x="345" y="214" width="42" height="140" rx="21" fill="#20DCFF"/>
+    <rect x="410" y="204" width="42" height="150" rx="21" fill="#20DCFF"/>
+    <rect x="475" y="224" width="42" height="130" rx="21" fill="#20DCFF"/>
+    <rect x="540" y="308" width="42" height="95" rx="21" fill="#20DCFF" transform="rotate(24 540 308)"/>
+  </g>
+
+  <g fill="#B8FDFF" filter="url(#glow)">
+    <circle cx="300" cy="294" r="14"/>
+    <circle cx="366" cy="248" r="14"/>
+    <circle cx="431" cy="238" r="14"/>
+    <circle cx="496" cy="257" r="14"/>
+    <circle cx="565" cy="334" r="14"/>
+    <circle cx="350" cy="460" r="14"/>
+    <circle cx="455" cy="505" r="14"/>
+  </g>
+</svg>

@@ -77,7 +77,7 @@ function HandScanner({ onComplete }) {
             transition={scanning ? { duration: 0.22, repeat: Infinity } : { duration: 3.2, repeat: Infinity }}
           >
             <motion.img
-              src="/src/assets/hand-scanner-logo.png"
+              src="/images/handscanner-logo.svg"
               alt="Hand scanner logo"
               className="w-[240px] object-contain opacity-100 drop-shadow-[0_0_28px_rgba(34,211,238,0.95)] md:w-[300px] lg:w-[420px]"
               animate={{ opacity: [0.95, 1, 0.95], scale: scanning ? [1, 1.02, 1] : [1, 1.01, 1] }}
