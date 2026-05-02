@@ -1,5 +1,3 @@
-import { ArrowRight, ShieldCheck } from 'lucide-react';
-
 const stats = [
   { label: 'RSAU/RUMKIT/RSGM PNBP', value: '19', suffix: 'Fasilitas' },
   { label: 'RSAU BLU', value: '3', suffix: 'Fasilitas' },
@@ -13,7 +11,7 @@ function App() {
       <header className="bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#0b3b75] text-white">♡</div>
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#0b3b75] text-2xl text-white">🖐️</div>
             <div>
               <p className="text-3xl font-extrabold leading-none tracking-wide text-[#223041]">SILARAS</p>
               <p className="text-xs font-semibold tracking-[0.28em] text-slate-400">TNI ANGKATAN UDARA</p>
@@ -52,17 +50,25 @@ function App() {
 
             <div className="mt-10 flex flex-wrap gap-4">
               <button className="inline-flex items-center gap-3 rounded-xl bg-[#d9ab43] px-8 py-4 text-2xl font-bold text-[#2a2a2a]">
-                Masuk Dashboard <ArrowRight className="h-6 w-6" />
+                Masuk Dashboard →
               </button>
               <button className="rounded-xl border border-white/40 px-8 py-4 text-2xl font-semibold text-white">Login Personel</button>
             </div>
 
             <p className="mt-8 inline-flex items-center gap-2 text-lg text-slate-300">
-              <ShieldCheck className="h-5 w-5 text-[#e0b856]" />
-              Akses terbatas untuk personel berwenang. Seluruh aktivitas tercatat dalam audit trail.
+              🔐 Akses terbatas untuk personel berwenang. Seluruh aktivitas tercatat dalam audit trail.
             </p>
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto grid max-w-7xl gap-6 px-6 py-12 md:grid-cols-2">
+        <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <img src="/images/silaras.svg" alt="Gambar SILARAS" className="h-auto w-full" />
+        </article>
+        <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <img src="/images/simon.svg" alt="Gambar SIMON" className="h-auto w-full" />
+        </article>
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-6 px-6 py-12 md:grid-cols-2 xl:grid-cols-4">
