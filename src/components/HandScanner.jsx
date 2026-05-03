@@ -8,46 +8,18 @@ function HandScanner({ onComplete }) {
   const [scanning, setScanning] = useState(false);
   const [progress, setProgress] = useState(0);
   const [success, setSuccess] = useState(false);
-  const audioContextRef = useRef(null);
   const clickAudioRef = useRef(null);
 
-  useEffect(() => {
-    clickAudioRef.current = new Audio('/Hand Scanner - Sound Effect.mp3');
-    clickAudioRef.current.preload = 'auto';
-  }, []);
-
-  const playFallbackTone = async () => {
-    try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-
-      if (!audioContextRef.current) {
-        audioContextRef.current = new AudioCtx();
-      }
-
-      const context = audioContextRef.current;
-      if (context.state === 'suspended') {
-        await context.resume();
-      }
-
-      const oscillator = context.createOscillator();
-      const gainNode = context.createGain();
-
-      oscillator.type = 'triangle';
-      oscillator.frequency.setValueAtTime(660, context.currentTime);
-      oscillator.frequency.exponentialRampToValueAtTime(440, context.currentTime + 0.12);
-
-      gainNode.gain.setValueAtTime(0.0001, context.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.16, context.currentTime + 0.02);
-      gainNode.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.14);
-
-      oscillator.connect(gainNode);
-      gainNode.connect(context.destination);
-      oscillator.start(context.currentTime);
-      oscillator.stop(context.currentTime + 0.15);
-    } catch (error) {
-      console.warn('Klik suara gagal diputar:', error);
+  const playClickSound = () => {
+    if (!clickAudioRef.current) {
+      clickAudioRef.current = new Audio('/Hand Scanner - Sound Effect.mp3');
+      clickAudioRef.current.preload = 'auto';
     }
+
+    clickAudioRef.current.currentTime = 0;
+    void clickAudioRef.current.play().catch((error) => {
+      console.warn('Gagal memutar MP3 scanner:', error);
+    });
   };
 
   const playClickSound = async () => {
