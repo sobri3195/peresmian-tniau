@@ -3,8 +3,8 @@ import AnimatedGrid from './AnimatedGrid';
 import ParticleBackground from './ParticleBackground';
 import WebsiteCard from './WebsiteCard';
 import logoPuskesau from '../assets/logo-puskesau.svg';
-const silarasPreview = '/images/silaras-preview.png';
-const simonPreview = '/images/simon-preview.png';
+import silarasPreview from '../assets/silaras-preview.png';
+import simonPreview from '../assets/simon-preview.png';
 
 const websites = [
   {
