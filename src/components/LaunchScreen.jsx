@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import AnimatedGrid from './AnimatedGrid';
 import ParticleBackground from './ParticleBackground';
 import WebsiteCard from './WebsiteCard';
-import logoPuskesau from '../assets/logo-puskesau.svg';
+import logoPuskesau from '../../WhatsApp Image 2026-04-27 at 11.08.07.jpeg';
 import silarasPreview from '../assets/silaras-preview.png';
 import simonPreview from '../assets/simon-preview.png';
 
