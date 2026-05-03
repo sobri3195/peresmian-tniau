@@ -19,7 +19,7 @@ function App() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[linear-gradient(160deg,#06172d_0%,#08213f_55%,#06172d_100%)] text-white">
-      <audio ref={introAudioRef} src="/Hand Scanner - Sound Effect.mp3" autoPlay preload="auto" className="hidden" />
+      <audio ref={introAudioRef} src="/sounds/hand-scanner-sound-effect.mp3" autoPlay preload="auto" className="hidden" />
 
       <AnimatePresence mode="wait">
         {stage === 'scanner' && (
