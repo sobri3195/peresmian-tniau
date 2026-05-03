@@ -3,21 +3,25 @@ import AnimatedGrid from './AnimatedGrid';
 import ParticleBackground from './ParticleBackground';
 import WebsiteCard from './WebsiteCard';
 import logoPuskesau from '../assets/logo-puskesau.svg';
+const silarasPreview = '/image_2026-05-03_072828296.png';
+const simonPreview = '/image_2026-05-03_072846738.png';
 
 const websites = [
   {
-    name: 'SILARAS',
+    title: 'SILARAS',
     url: 'https://silaras.puskesau.com',
-    preview: '/src/assets/silaras-preview.png',
+    image: silarasPreview,
     description:
       'Sistem layanan digital PUSKESAU untuk mendukung kemudahan akses, integrasi data, dan peningkatan mutu pelayanan.',
+    buttonText: 'Buka SILARAS',
   },
   {
-    name: 'SIMON',
+    title: 'SIMON',
     url: 'https://simon.puskesau.com',
-    preview: '/src/assets/simon-preview.png',
+    image: simonPreview,
     description:
       'Sistem monitoring digital PUSKESAU untuk mendukung pemantauan, evaluasi, dan penguatan layanan secara modern.',
+    buttonText: 'Buka SIMON',
   },
 ];
 
@@ -39,7 +43,7 @@ function LaunchScreen({ onReset }) {
 
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           {websites.map((site, i) => (
-            <WebsiteCard key={site.name} {...site} index={i} />
+            <WebsiteCard key={site.title} {...site} index={i} />
           ))}
         </div>
 
