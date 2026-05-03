@@ -6,14 +6,13 @@ import TransformationIntro from './components/TransformationIntro';
 
 function App() {
   const [stage, setStage] = useState('scanner');
-  const clickSoundUrl = 'https://www.youtube.com/watch?v=0xQN2vlo7V4';
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[linear-gradient(160deg,#06172d_0%,#08213f_55%,#06172d_100%)] text-white">
       <AnimatePresence mode="wait">
         {stage === 'scanner' && (
           <motion.div key="scanner" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 0.98 }} transition={{ duration: 0.7 }}>
-            <HandScanner onComplete={() => setStage('transformation')} clickSoundUrl={clickSoundUrl} />
+            <HandScanner onComplete={() => setStage('transformation')} />
           </motion.div>
         )}
 
