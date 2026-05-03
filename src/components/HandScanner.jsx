@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
-import handScannerLogo from '../assets/hand-scanner-logo.svg';
+import handScannerImage from '../../image_2026-05-03_072846738.png';
 import AnimatedGrid from './AnimatedGrid';
 import ParticleBackground from './ParticleBackground';
 
@@ -43,47 +43,61 @@ function HandScanner({ onComplete }) {
     <section className="relative min-h-screen overflow-hidden bg-slate-950 px-6 text-center">
       <AnimatedGrid />
       <ParticleBackground />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.16),transparent_58%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.18),transparent_58%)]" />
 
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center">
         <motion.h1
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mx-auto mb-12 max-w-[900px] text-2xl font-extrabold leading-tight text-cyan-100 drop-shadow-[0_0_16px_rgba(34,211,238,0.38)] sm:text-3xl md:text-4xl lg:text-5xl"
+          className="mx-auto mb-12 max-w-[960px] text-2xl font-extrabold leading-tight text-cyan-100 drop-shadow-[0_0_16px_rgba(34,211,238,0.38)] sm:text-3xl md:mb-14 md:text-4xl lg:text-5xl"
         >
           Mohon izin Kapuskesau meletakkan tangan untuk memulai
         </motion.h1>
 
         <div className="relative flex items-center justify-center">
           <motion.div
-            className="pointer-events-none absolute h-[86%] w-[86%] rounded-full border border-cyan-200/25"
+            className="pointer-events-none absolute h-[95%] w-[95%] rounded-full border border-cyan-200/20"
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           />
           <motion.div
-            className="pointer-events-none absolute h-[95%] w-[95%] rounded-full bg-cyan-300/10 blur-2xl"
-            animate={{ opacity: scanning ? [0.2, 0.45, 0.2] : [0.15, 0.3, 0.15], scale: scanning ? [1, 1.06, 1] : [1, 1.03, 1] }}
+            className="pointer-events-none absolute h-[108%] w-[108%] rounded-full bg-cyan-300/10 blur-2xl"
+            animate={{ opacity: scanning ? [0.2, 0.55, 0.2] : [0.15, 0.35, 0.15], scale: scanning ? [1, 1.06, 1] : [1, 1.03, 1] }}
             transition={{ duration: scanning ? 1.5 : 3, repeat: Infinity }}
           />
 
           <motion.div
-            className="relative z-20"
-            animate={{ y: scanning ? [0, -2, 2, 0] : [0, -8, 0] }}
-            transition={{ duration: scanning ? 0.35 : 3.4, repeat: Infinity }}
+            className="pointer-events-none absolute h-[120%] w-[120%] rounded-full border border-cyan-200/20"
+            animate={{ scale: [0.95, 1.04, 0.95], opacity: [0.18, 0.32, 0.18] }}
+            transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}
+          />
+
+          <motion.button
+            type="button"
+            onClick={startScan}
+            className="group relative z-20 cursor-pointer"
+            animate={{ y: scanning ? [0, -2, 2, 0] : [0, -7, 0], scale: scanning ? [1, 1.01, 1] : [1, 1.02, 1] }}
+            transition={{ duration: scanning ? 0.45 : 3.4, repeat: Infinity }}
           >
-            <div className="relative mx-auto w-[340px] max-w-[80vw] overflow-hidden rounded-[32px] border border-cyan-300/30 bg-white/5 shadow-[0_0_60px_rgba(34,211,238,0.35)] backdrop-blur-sm md:w-[400px] lg:w-[430px]">
+            <div className={`relative rounded-[32px] overflow-hidden border border-cyan-300/30 bg-white/5 shadow-[0_0_60px_rgba(34,211,238,0.35)] backdrop-blur-sm transition-all ${scanning ? 'shadow-[0_0_90px_rgba(34,211,238,0.62)]' : ''}`}>
               <img
-                src={handScannerLogo}
+                src={handScannerImage}
                 alt="Hand scanner"
-                className="w-full object-contain"
+                className="w-[280px] max-w-[80vw] rounded-3xl object-contain md:w-[350px] lg:w-[430px]"
               />
 
               {scanning && (
                 <>
                   <motion.div
                     className="pointer-events-none absolute left-[8%] right-[8%] h-[3px] rounded-full bg-cyan-200 shadow-[0_0_14px_rgba(34,211,238,0.95)]"
-                    initial={{ top: '12%' }}
-                    animate={{ top: ['12%', '88%'] }}
+                    initial={{ top: '8%' }}
+                    animate={{ top: ['8%', '88%'] }}
+                    transition={{ duration: 1.3, repeat: Infinity, ease: 'linear' }}
+                  />
+                  <motion.div
+                    className="pointer-events-none absolute left-[8%] right-[8%] h-10 bg-gradient-to-b from-cyan-200/25 via-cyan-200/10 to-transparent"
+                    initial={{ top: '8%' }}
+                    animate={{ top: ['8%', '88%'] }}
                     transition={{ duration: 1.3, repeat: Infinity, ease: 'linear' }}
                   />
                   <motion.div
@@ -94,14 +108,14 @@ function HandScanner({ onComplete }) {
                 </>
               )}
             </div>
-          </motion.div>
+          </motion.button>
 
           {scanning && (
             <motion.div
               className="pointer-events-none absolute h-[102%] w-[102%] rounded-full border border-cyan-200/45"
-              initial={{ scale: 0.92, opacity: 0.5 }}
-              animate={{ scale: 1.06, opacity: 0 }}
-              transition={{ duration: 1.4, repeat: Infinity }}
+              initial={{ scale: 0.9, opacity: 0.5 }}
+              animate={{ scale: 1.08, opacity: 0 }}
+              transition={{ duration: 1.3, repeat: Infinity }}
             />
           )}
         </div>
@@ -111,12 +125,12 @@ function HandScanner({ onComplete }) {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
             onClick={startScan}
-            className="mt-9 rounded-2xl border border-amber-300/80 bg-white/5 px-8 py-3 text-lg font-semibold text-amber-300 shadow-[0_0_20px_rgba(250,204,21,0.22)] transition-shadow hover:shadow-[0_0_30px_rgba(250,204,21,0.36)]"
+            className="mt-10 rounded-2xl border border-amber-300/80 bg-white/5 px-8 py-3 text-lg font-semibold text-amber-300 shadow-[0_0_20px_rgba(250,204,21,0.22)] transition-shadow hover:shadow-[0_0_30px_rgba(250,204,21,0.36)]"
           >
             Mulai Scan
           </motion.button>
         ) : (
-          <div className="mx-auto mt-9 w-[360px] max-w-[80vw]">
+          <div className="mx-auto mt-10 w-[360px] max-w-[80vw]">
             <p className="mb-3 text-cyan-100">{status}</p>
             <div className="h-3 overflow-hidden rounded-full border border-cyan-200/35 bg-slate-950/85">
               <motion.div
