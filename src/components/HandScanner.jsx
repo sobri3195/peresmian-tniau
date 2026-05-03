@@ -22,22 +22,6 @@ function HandScanner({ onComplete }) {
     });
   };
 
-  const playClickSound = async () => {
-    const clickAudio = clickAudioRef.current;
-
-    if (clickAudio) {
-      try {
-        clickAudio.currentTime = 0;
-        await clickAudio.play();
-        return;
-      } catch (error) {
-        console.warn('Gagal memutar file MP3, menggunakan suara cadangan:', error);
-      }
-    }
-
-    await playFallbackTone();
-  };
-
   useEffect(() => {
     if (!scanning) return;
 
