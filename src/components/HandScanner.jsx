@@ -9,8 +9,14 @@ function HandScanner({ onComplete }) {
   const [progress, setProgress] = useState(0);
   const [success, setSuccess] = useState(false);
   const audioContextRef = useRef(null);
+  const clickAudioRef = useRef(null);
 
-  const playClickSound = () => {
+  useEffect(() => {
+    clickAudioRef.current = new Audio('/Hand Scanner - Sound Effect.mp3');
+    clickAudioRef.current.preload = 'auto';
+  }, []);
+
+  const playFallbackTone = () => {
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;
@@ -42,6 +48,22 @@ function HandScanner({ onComplete }) {
     } catch (error) {
       console.warn('Klik suara gagal diputar:', error);
     }
+  };
+
+  const playClickSound = async () => {
+    const clickAudio = clickAudioRef.current;
+
+    if (clickAudio) {
+      try {
+        clickAudio.currentTime = 0;
+        await clickAudio.play();
+        return;
+      } catch (error) {
+        console.warn('Gagal memutar file MP3, menggunakan suara cadangan:', error);
+      }
+    }
+
+    playFallbackTone();
   };
 
   useEffect(() => {
