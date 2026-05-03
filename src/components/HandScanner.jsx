@@ -12,7 +12,7 @@ function HandScanner({ onComplete }) {
 
   const playClickSound = () => {
     if (!clickAudioRef.current) {
-      clickAudioRef.current = new Audio('/Hand Scanner - Sound Effect.mp3');
+      clickAudioRef.current = new Audio('/sounds/hand-scanner-sound-effect.mp3');
       clickAudioRef.current.preload = 'auto';
     }
 
