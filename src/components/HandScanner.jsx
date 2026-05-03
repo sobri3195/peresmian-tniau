@@ -4,68 +4,66 @@ import handScannerImage from '../../WhatsApp Image 2026-05-03 at 07.12.11.jpeg';
 import AnimatedGrid from './AnimatedGrid';
 import ParticleBackground from './ParticleBackground';
 
-const YOUTUBE_IFRAME_API_SRC = 'https://www.youtube.com/iframe_api';
-
-function extractVideoId(url) {
-  const match = String(url || '').match(/(?:v=|youtu\.be\/)([A-Za-z0-9_-]{11})/);
-  return match ? match[1] : null;
-}
-
-function HandScanner({ onComplete, clickSoundUrl }) {
+function HandScanner({ onComplete }) {
   const [scanning, setScanning] = useState(false);
   const [progress, setProgress] = useState(0);
   const [success, setSuccess] = useState(false);
-  const playerRef = useRef(null);
-  const playerHostRef = useRef(null);
+  const audioContextRef = useRef(null);
+  const clickAudioRef = useRef(null);
 
   useEffect(() => {
-    const videoId = extractVideoId(clickSoundUrl);
-    if (!videoId) return undefined;
+    clickAudioRef.current = new Audio('/Hand Scanner - Sound Effect.mp3');
+    clickAudioRef.current.preload = 'auto';
+  }, []);
 
-    const initPlayer = () => {
-      if (!playerHostRef.current || !window.YT?.Player || playerRef.current) return;
-
-      playerRef.current = new window.YT.Player(playerHostRef.current, {
-        width: 0,
-        height: 0,
-        videoId,
-        playerVars: { controls: 0, playsinline: 1, rel: 0 },
-      });
-    };
-
-    if (window.YT?.Player) {
-      initPlayer();
-      return undefined;
-    }
-
-    if (!document.querySelector(`script[src="${YOUTUBE_IFRAME_API_SRC}"]`)) {
-      const script = document.createElement('script');
-      script.src = YOUTUBE_IFRAME_API_SRC;
-      document.body.appendChild(script);
-    }
-
-    const previousHandler = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = () => {
-      previousHandler?.();
-      initPlayer();
-    };
-
-    return () => {
-      if (window.onYouTubeIframeAPIReady === previousHandler) return;
-      window.onYouTubeIframeAPIReady = previousHandler;
-    };
-  }, [clickSoundUrl]);
-
-  const playClickSound = () => {
-    const player = playerRef.current;
-    if (!player?.playVideo) return;
-
+  const playFallbackTone = () => {
     try {
-      player.seekTo(0, true);
-      player.playVideo();
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+
+      if (!audioContextRef.current) {
+        audioContextRef.current = new AudioCtx();
+      }
+
+      const context = audioContextRef.current;
+      if (context.state === 'suspended') {
+        context.resume();
+      }
+
+      const oscillator = context.createOscillator();
+      const gainNode = context.createGain();
+
+      oscillator.type = 'triangle';
+      oscillator.frequency.setValueAtTime(660, context.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(440, context.currentTime + 0.12);
+
+      gainNode.gain.setValueAtTime(0.0001, context.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.16, context.currentTime + 0.02);
+      gainNode.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.14);
+
+      oscillator.connect(gainNode);
+      gainNode.connect(context.destination);
+      oscillator.start(context.currentTime);
+      oscillator.stop(context.currentTime + 0.15);
     } catch (error) {
       console.warn('Klik suara gagal diputar:', error);
     }
+  };
+
+  const playClickSound = async () => {
+    const clickAudio = clickAudioRef.current;
+
+    if (clickAudio) {
+      try {
+        clickAudio.currentTime = 0;
+        await clickAudio.play();
+        return;
+      } catch (error) {
+        console.warn('Gagal memutar file MP3, menggunakan suara cadangan:', error);
+      }
+    }
+
+    playFallbackTone();
   };
 
   useEffect(() => {
@@ -104,8 +102,6 @@ function HandScanner({ onComplete, clickSoundUrl }) {
       <AnimatedGrid />
       <ParticleBackground />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.18),transparent_58%)]" />
-
-      <div ref={playerHostRef} className="hidden" />
 
       <div className="relative z-10 flex min-h-screen flex-col items-center justify-center">
         <motion.h1
