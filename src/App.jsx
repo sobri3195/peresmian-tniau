@@ -11,10 +11,23 @@ function App() {
   useEffect(() => {
     if (!introAudioRef.current) return;
 
-    introAudioRef.current.currentTime = 0;
-    void introAudioRef.current.play().catch((error) => {
-      console.warn('Autoplay sound diblokir browser:', error);
-    });
+    const playIntro = () => {
+      introAudioRef.current.currentTime = 0;
+      void introAudioRef.current.play().catch((error) => {
+        console.warn('Autoplay sound diblokir browser:', error);
+      });
+    };
+
+    playIntro();
+
+    const unlockAndPlay = () => {
+      playIntro();
+      window.removeEventListener('pointerdown', unlockAndPlay);
+    };
+
+    window.addEventListener('pointerdown', unlockAndPlay, { once: true });
+
+    return () => window.removeEventListener('pointerdown', unlockAndPlay);
   }, []);
 
   return (
