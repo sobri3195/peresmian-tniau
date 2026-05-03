@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 560" role="img" aria-labelledby="title desc">
+  <title id="title">Logo PUSKESAU</title>
+  <desc id="desc">Perisai biru-hijau dengan simbol kesehatan bersayap.</desc>
+  <defs>
+    <linearGradient id="bgBlue" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#1f8fe0"/>
+      <stop offset="1" stop-color="#0f5da0"/>
+    </linearGradient>
+  </defs>
+  <path d="M256 18c85 0 163 17 231 50v159c0 149-98 270-231 315C123 497 25 376 25 227V68C93 35 171 18 256 18z" fill="#fff"/>
+  <path d="M256 35c79 0 152 16 216 47v146c0 140-91 254-216 299C131 482 40 368 40 228V82c64-31 137-47 216-47z" fill="url(#bgBlue)"/>
+  <path d="M58 340c48 90 122 158 198 187 113-45 197-136 214-247-140 16-267 73-412 60z" fill="#14b84a"/>
+  <path d="M254 115v320" stroke="#f5f5f5" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="254" cy="105" r="18" fill="#f5f5f5"/>
+  <path d="M254 150c-16 0-30 10-36 24-6 15-3 31 9 42l20 19-24 25c-12 12-14 31-4 45 7 10 18 15 29 15" fill="none" stroke="#d81f26" stroke-width="12" stroke-linecap="round"/>
+  <path d="M254 150c16 0 30 10 36 24 6 15 3 31-9 42l-20 19 24 25c12 12 14 31 4 45-7 10-18 15-29 15" fill="none" stroke="#d81f26" stroke-width="12" stroke-linecap="round"/>
+  <path d="M250 132c22-6 70-8 122-36-24 42-69 51-111 51" fill="#f3e530" stroke="#c5b800" stroke-width="2"/>
+  <path d="M116 300l150 112 120-93-152-112z" fill="#5f5f66"/>
+  <path d="M181 303l85 63" stroke="#fff" stroke-width="8"/>
+  <path d="M145 324l85 63" stroke="#fff" stroke-width="8"/>
+  <path d="M315 338l76 57" stroke="#d81f26" stroke-width="10"/>
+  <path d="M280 358l76 57" stroke="#d81f26" stroke-width="10"/>
+</svg>
