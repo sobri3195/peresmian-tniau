@@ -16,7 +16,7 @@ function HandScanner({ onComplete }) {
     clickAudioRef.current.preload = 'auto';
   }, []);
 
-  const playFallbackTone = () => {
+  const playFallbackTone = async () => {
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;
       if (!AudioCtx) return;
@@ -27,7 +27,7 @@ function HandScanner({ onComplete }) {
 
       const context = audioContextRef.current;
       if (context.state === 'suspended') {
-        context.resume();
+        await context.resume();
       }
 
       const oscillator = context.createOscillator();
@@ -63,7 +63,7 @@ function HandScanner({ onComplete }) {
       }
     }
 
-    playFallbackTone();
+    await playFallbackTone();
   };
 
   useEffect(() => {
@@ -93,7 +93,7 @@ function HandScanner({ onComplete }) {
 
   const startScan = () => {
     if (scanning) return;
-    playClickSound();
+    void playClickSound();
     setScanning(true);
   };
 
