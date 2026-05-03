@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useMemo, useState } from 'react';
-import handScannerImage from '../../image_2026-05-03_072846738.png';
+import handScannerImage from '../../WhatsApp Image 2026-05-03 at 07.12.11.jpeg';
 import AnimatedGrid from './AnimatedGrid';
 import ParticleBackground from './ParticleBackground';
 
