@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import HandScanner from './components/HandScanner';
 import LaunchScreen from './components/LaunchScreen';
 import TransformationIntro from './components/TransformationIntro';

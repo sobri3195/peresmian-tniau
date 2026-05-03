@@ -22,6 +22,22 @@ function HandScanner({ onComplete }) {
     });
   };
 
+  const playClickSound = async () => {
+    const clickAudio = clickAudioRef.current;
+
+    if (clickAudio) {
+      try {
+        clickAudio.currentTime = 0;
+        await clickAudio.play();
+        return;
+      } catch (error) {
+        console.warn('Gagal memutar file MP3, menggunakan suara cadangan:', error);
+      }
+    }
+
+    await playFallbackTone();
+  };
+
   useEffect(() => {
     if (!scanning) return;
 
@@ -49,7 +65,7 @@ function HandScanner({ onComplete }) {
 
   const startScan = () => {
     if (scanning) return;
-    playClickSound();
+    void playClickSound();
     setScanning(true);
   };
 
@@ -65,7 +81,7 @@ function HandScanner({ onComplete }) {
           animate={{ opacity: 1, y: 0 }}
           className="mx-auto mb-12 max-w-[960px] text-2xl font-extrabold leading-tight text-cyan-100 drop-shadow-[0_0_16px_rgba(34,211,238,0.38)] sm:text-3xl md:mb-14 md:text-4xl lg:text-5xl"
         >
-          Mohon izin Kapuskesau meletakkan tangan untuk memulai
+          Mohon izin Kapuskesau berkenan meletakkan tangan untuk memulai
         </motion.h1>
 
         <div className="relative flex items-center justify-center">
